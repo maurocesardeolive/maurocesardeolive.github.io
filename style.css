@@ -1,0 +1,647 @@
+:root {
+    /* Cores Padrão (Modo Claro) */
+    --primary: #2563eb;
+    --dark: #0f172a;      /* Usado na Navbar */
+    --bg-body: #f8fafc;   /* Fundo da página */
+    --bg-card: #ffffff;   /* Fundo dos cards */
+    --text-main: #334155; /* Texto principal */
+    --text-title: #0f172a;/* Títulos */
+    --border: #e2e8f0;    /* Bordas */
+}
+
+/* Cores do Modo Escuro (Quando ativado) */
+body.dark-mode {
+    --primary: #3b82f6;   /* Azul mais claro para brilhar no escuro */
+    --dark: #000000;      /* Navbar fica preta pura */
+    --bg-body: #0f172a;   /* Fundo azul marinho muito escuro */
+    --bg-card: #1e293b;   /* Cards cinza azulados */
+    --text-main: #94a3b8; /* Texto cinza claro */
+    --text-title: #ffffff;/* Títulos brancos */
+    --border: #334155;    /* Bordas mais escuras */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+/* AQUI É IMPORTANTE: Usamos as variáveis agora */
+body { 
+    background-color: var(--bg-body); 
+    color: var(--text-main); 
+    transition: background 0.3s, color 0.3s; /* Suaviza a troca */
+}
+
+/* Navbar - Fundo Branco e Borda Preta */
+.navbar {
+    background: white; /* Fundo branco */
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black; /* Texto base preto */
+    border-bottom: 2px solid black; /* A linha sólida na base */
+}
+
+/* Links do Menu - Pretos */
+.nav-links a {
+    text-decoration: none;
+    color: black; /* Links pretos */
+    font-weight: 600; /* Deixa um pouco mais grosso para ler melhor no branco */
+    transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse nos links (opcional, fica bonito) */
+.nav-links a:hover {
+    color: grey; /* Fica cinza quando passa o mouse */
+}
+
+/* Mantém o botão de "Enviar IA" legível */
+.btn-submit {
+    background: var(--primary);
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: white !important; /* Garante que o texto do botão continue branco */
+}
+/* --- REMOVA ESTA LINHA ANTIGA --- */
+/* .logo { font-size: 1.5rem; font-weight: bold; } */
+
+/* --- ADICIONE ESTES NOVOS ESTILOS PARA O LOGO DE IMAGEM --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    /* Garante que não tenha sublinhado no link da imagem */
+    text-decoration: none; 
+}
+
+.logo-img {
+    /* Altura fixa para manter a navbar elegante. Ajuste se necessário (ex: 50px) */
+    height: 40px; 
+    width: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços extras abaixo da imagem */
+}
+
+/* Ajuste fino na Navbar para garantir alinhamento vertical perfeito */
+.navbar {
+   /* (Os outros estilos da navbar continuam os mesmos, só garante que este esteja lá) */
+   align-items: center;
+}
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: black; }
+.btn-submit { background: var(--primary); padding: 8px 16px; border-radius: 5px; color: white !important; }
+
+/* Hero */
+.hero {
+    text-align: center; padding: 4rem 1rem; background: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+.hero h1 { margin-bottom: 1rem; color: var(--dark); }
+.search-box { margin: 2rem 0; }
+.search-box input {
+    padding: 12px; width: 300px; border: 1px solid #ccc; border-radius: 5px;
+}
+.search-box button {
+    padding: 12px 20px; background: var(--primary); color: white;
+    border: none; border-radius: 5px; cursor: pointer;
+}
+
+/* Categorias */
+/* --- Revertendo para o estilo Clássico (Grade) --- */
+.categories-chips {
+    display: flex;
+    justify-content: center; /* Centraliza na tela */
+    gap: 10px;
+    flex-wrap: wrap; /* O segredo: permite quebrar linha */
+    margin-top: 1rem;
+    padding-bottom: 10px;
+}
+
+.chip {
+    padding: 6px 16px;
+    background: var(--bg-card); /* Usa a cor do card (branco ou escuro) */
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--text-main);
+}
+
+.chip:hover {
+    background: var(--border); /* Escurece levemente ao passar o mouse */
+}
+
+.chip.active {
+    background: var(--dark); /* Fica preto (ou branco no dark mode) */
+    color: var(--bg-body); /* Texto inverte a cor */
+    border-color: var(--dark);
+}
+/* Ads */
+.ad-banner {
+    width: 100%; max-width: 728px; height: 90px; background: #ddd;
+    margin: 2rem auto; display: flex; justify-content: center; align-items: center; color: #666;
+}
+
+/* Grid */
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.filters { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s; /* Animação rápida e seca */
+    position: relative;
+    /* Adicionei box-shadow padrão para dar volume */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+.card:hover {
+    transform: translateY(-5px); /* Apenas sobe um pouquinho */
+    /* Sombra preta suave padrão, sem cor */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+    border-color: var(--border); /* Mantém a cor da borda original */
+}
+.card-header { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.card-title { font-weight: bold; font-size: 1.2rem; color: var(--text-title);}
+.badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: #eff6ff; color: var(--primary); }
+.card p { font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem; line-height: 1.5; }
+.btn-visit {
+    display: block; text-align: center; background: var(--dark); color: white;
+    padding: 10px; text-decoration: none; border-radius: 5px; margin-top: auto;
+}
+.sponsored-tag {
+    position: absolute; top: 10px; right: 10px; background: #fef08a; 
+    color: #854d0e; font-size: 0.7rem; padding: 2px 6px; border-radius: 3px;
+}
+
+/* No modo escuro, o glow fica mais visível */
+body.dark-mode .card:hover {
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25);
+    border-color: #3b82f6;
+}
+
+footer { text-align: center; padding: 2rem; background: var(--dark); color: #94a3b8; margin-top: 3rem; }
+/* --- Estilos do Blog --- */
+
+.blog-hero { background: #1e293b; color: white; border-bottom: none; }
+.blog-hero h1 { color: white; }
+
+/* Layout de Artigo com Sidebar */
+.article-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Conteúdo ocupa 2/3, Sidebar 1/3 */
+    gap: 40px;
+    margin-top: 2rem;
+}
+
+/* Conteúdo do Artigo */
+.article-content h1 { font-size: 2.5rem; color: var(--dark); margin-bottom: 10px; }
+.meta-info { color: #64748b; margin-bottom: 20px; font-size: 0.9rem; }
+.featured-image { width: 100%; height: auto; border-radius: 10px; margin-bottom: 2rem; }
+
+.post-body h2 { color: var(--dark); margin-top: 2rem; margin-bottom: 1rem; }
+.post-body p { margin-bottom: 1rem; line-height: 1.8; font-size: 1.1rem; color: #334155; }
+
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; gap: 30px; }
+.widget { background: white; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px; }
+.widget h3 { margin-bottom: 15px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
+
+.ad-box {
+    background: #f1f5f9; height: 250px; display: flex;
+    justify-content: center; align-items: center; color: #94a3b8; border: 1px dashed #cbd5e1;
+}
+
+.sidebar-links { list-style: none; }
+.sidebar-links li { margin-bottom: 10px; }
+.sidebar-links a { text-decoration: none; color: var(--primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .article-layout { grid-template-columns: 1fr; } /* Sidebar vai para baixo no celular */
+}
+/* --- Estilos dos Logos das Ferramentas --- */
+
+/* Ajusta o cabeçalho para alinhar tudo no centro verticalmente */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 1rem;
+}
+
+/* Cria um grupo para o Logo + Nome ficarem juntos à esquerda */
+.tool-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espaço entre o logo e o nome */
+}
+
+/* Define o tamanho e formato da imagem do logo */
+.tool-logo {
+    width: 40px;      /* Largura fixa */
+    height: 40px;     /* Altura fixa */
+    object-fit: contain; /* Garante que o logo inteiro apareça sem distorcer */
+    border-radius: 6px; /* Borda levemente arredondada */
+    background-color: #f8fafc; /* Fundo cinza bem claro caso o logo seja transparente */
+    border: 1px solid #e2e8f0; /* Borda fina para definição */
+}
+
+/* Remove a margem do título para ele alinhar perfeitamente com o logo */
+.card-title {
+    margin: 0; 
+    line-height: 1.2;
+}
+/* --- Estilos da Página de Envio (Formulário) --- */
+
+.form-container {
+    max-width: 600px;
+    margin: 3rem auto; /* Centraliza na tela */
+    padding: 2rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.form-container p {
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Estilo dos campos de texto */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0; /* Borda suave */
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s;
+}
+
+/* Efeito ao clicar no campo */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary); /* Fica azul */
+    outline: none;
+}
+
+/* Botão de Enviar */
+.btn-form {
+    width: 100%;
+    padding: 14px;
+    background: var(--dark);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-form:hover {
+    background: var(--primary); /* Muda para azul ao passar o mouse */
+}
+/* Botão de Tema */
+.btn-theme {
+    background: none;
+    border: 0px solid var(--border); /* Usa a borda variável */
+    width: 35px;  /* Largura fixa para ficar redondinho */
+    height: 20px; /* Altura fixa */
+    border-radius: 50%; /* Deixa totalmente redondo */
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: var(--text-main); /* Ícone acompanha a cor do texto */
+    
+    /* Removemos a margin-right antiga pois o Flexbox da lista já dá espaço */
+}
+
+.btn-theme:hover {
+    background-color: var(--border);
+}
+/* --- Estilos do Rodapé com Links Legais --- */
+footer {
+    padding: 3rem 1rem;
+    background: var(--dark);
+    color: #94a3b8;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white; /* Brilha ao passar o mouse */
+    text-decoration: underline;
+}
+/* --- Estilos do Blog --- */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.blog-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #e2e8f0;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-tag {
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.blog-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.blog-title a {
+    color: var(--text-title);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.blog-title a:hover {
+    color: var(--primary);
+}
+
+.blog-excerpt {
+    font-size: 0.95rem;
+    color: #64748b; /* Cinza médio */
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Ajuste para Dark Mode no Blog */
+body.dark-mode .blog-excerpt {
+    color: #94a3b8;
+}
+/* --- Estilos da Página de Artigo (Leitura) --- */
+
+/* Centraliza e limita a largura para leitura confortável */
+.article-container {
+    max-width: 720px; /* Largura ideal para texto */
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+    color: var(--text-title);
+}
+
+.article-meta {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Imagem de destaque */
+.article-featured-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* O Corpo do Texto */
+.article-content {
+    font-size: 1.125rem; /* Um pouco maior que o normal para leitura */
+    line-height: 1.8; /* Espaçamento entre linhas confortável */
+    color: var(--text-main);
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+}
+
+.article-content h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-title);
+}
+
+.article-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-title);
+}
+
+.article-content ul, 
+.article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-title);
+    background: var(--bg-body); /* Ou um tom levemente diferente */
+}
+
+/* Link de voltar */
+.article-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.btn-back {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes Mobile */
+@media (max-width: 768px) {
+    .article-header h1 {
+        font-size: 1.8rem;
+    }
+    .article-content {
+        font-size: 1rem;
+    }
+}
+/* --- Redes Sociais no Rodapé --- */
+.social-icons {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Bolinha perfeita */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil */
+    color: #94a3b8;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Efeito Hover (Muda a cor conforme a rede) */
+.social-link:hover {
+    transform: translateY(-3px); /* Sobe um pouquinho */
+    color: white;
+}
+
+/* Cores específicas para cada rede ao passar o mouse */
+.social-link.twitter:hover { background-color: #000000; } /* X é preto */
+.social-link.youtube:hover { background-color: #ef4444; } /* Vermelho */
+.social-link.instagram:hover { background-color: #e1306c; } /* Rosa */
+.social-link.tiktok:hover { background-color: #000000; } /* Preto */
+.social-link.facebook:hover { background-color: #1877f2; } /* Azul */
+.social-link.linkedin:hover { background-color: #0a66c2; } /* Azul escuro */
+
+/* --- Estilização do Google Tradutor --- */
+
+/* Ajusta o container do botão no menu */
+#google_translate_element {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+/* Esconde a barra azul feia do Google no topo */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+body {
+    top: 0px !important; 
+}
+
+/* Estiliza o Dropdown */
+.goog-te-gadget-simple {
+    background-color: transparent !important;
+    border: 1px solid var(--border) !important;
+    padding: 4px 8px !important;
+    border-radius: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease;
+}
+
+/* Texto dentro do botão */
+.goog-te-gadget-simple span {
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+}
+
+/* Ícone do Google */
+.goog-te-gadget-icon {
+    display: none !important; /* Esconde o logo colorido do Google pra ficar clean */
+}
+
+/* Hover (ao passar o mouse) */
+.goog-te-gadget-simple:hover {
+    border-color: var(--primary) !important;
+    background-color: rgba(0,0,0,0.05) !important;
+}
+
+/* Ajuste para Dark Mode */
+body.dark-mode .goog-te-gadget-simple {
+    background-color: rgba(255,255,255,0.1) !important;
+}

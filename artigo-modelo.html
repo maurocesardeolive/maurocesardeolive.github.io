@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Título do Artigo Aqui - TheAIStackies</title>
+    <meta name="description" content="Uma breve descrição do artigo para aparecer no Google (max 160 caracteres).">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <meta property="og:title" content="Título do Artigo Aqui">
+    <meta property="og:image" content="https://www.theaistackies.com/social.png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="logo.png" alt="Logo TheAIStackies" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="submit.html" class="btn-submit">Enviar IA</a></li>
+            <li id="google_translate_element"></li>
+            <li><button id="themeToggle" class="btn-theme">🌙</button></li>
+        </ul>
+    </nav>
+
+    <main class="container article-container">
+        
+        <header class="article-header">
+            <span class="badge">Tutoriais</span> <h1>Título Impactante do Artigo: Como Usar IAs em 2026</h1>
+            <div class="article-meta">
+                <span>Por <strong>TheAIStackies</strong></span>
+                <span>•</span>
+                <span>18 de Janeiro, 2026</span>
+            </div>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Capa do Artigo" class="article-featured-image">
+
+        <div class="article-content">
+            <p>Este é o parágrafo de introdução. Aqui você apresenta o problema e o que o leitor vai aprender neste artigo. A Inteligência Artificial mudou a forma como trabalhamos.</p>
+
+            <h2>1. O primeiro passo importante</h2>
+            <p>Aqui explicamos o conceito. Você pode usar <strong>negrito para destacar</strong> partes importantes.</p>
+            
+            <p>Exemplo de lista para facilitar a leitura:</p>
+            <ul>
+                <li>Vantagem número um da ferramenta.</li>
+                <li>Vantagem número dois.</li>
+                <li>Ponto de atenção importante.</li>
+            </ul>
+
+            <h2>2. Comparando Ferramentas</h2>
+            <p>É importante comparar as opções. Veja a diferença entre ChatGPT e Claude, por exemplo.</p>
+            
+            <blockquote>
+                "Citações ou frases importantes ficam ótimas dentro de blocos de citação como este."
+            </blockquote>
+
+            <h3>Conclusão</h3>
+            <p>Resuma o que foi aprendido e convide o leitor para uma ação, como testar uma ferramenta do diretório.</p>
+        </div>
+
+        <div class="article-footer">
+            <a href="blog.html" class="btn-back">← Voltar para o Blog</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TheAIStackies.com. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Política de Privacidade</a>
+            <a href="terms.html">Termos de Uso</a>
+            <a href="submit.html">Enviar uma IA</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="cookieBanner" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--bg-card); border: 1px solid var(--primary); padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 9999; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 250px;">
+            <p style="margin: 0; color: var(--text-main); font-size: 0.9rem;">
+                Nós usamos cookies para melhorar sua experiência e analisar o tráfego. Ao continuar, você concorda com nossa 
+                <a href="privacy.html" style="color: var(--primary); text-decoration: underline;">Política de Privacidade</a>.
+            </p>
+        </div>
+        <button onclick="acceptCookies()" class="btn-visit" style="padding: 10px 25px; border: none; cursor: pointer; white-space: nowrap;">
+            Aceitar e Fechar
+        </button>
+    </div>
+
+    <script>
+        // Lógica do Banner de Cookies
+        function checkCookies() {
+            // Se NÃO tiver o registro de "aceito" no navegador, mostra o banner
+            if (!localStorage.getItem("cookiesAccepted")) {
+                document.getElementById("cookieBanner").style.display = "flex";
+            }
+        }
+
+        function acceptCookies() {
+            // Salva no navegador que a pessoa aceitou
+            localStorage.setItem("cookiesAccepted", "true");
+            // Esconde o banner
+            document.getElementById("cookieBanner").style.display = "none";
+        }
+
+        // Roda a verificação assim que o site carrega
+        window.onload = function() {
+            checkCookies();
+        };
+    </script>
+</body>
+</html>

@@ -1,7 +1,9 @@
 // Carregar dados iniciais
 document.addEventListener('DOMContentLoaded', () => {
-    renderCategories();
-    renderTools(toolsData);
+    if (typeof toolsData !== 'undefined' && document.getElementById('toolsGrid')) {
+        renderCategories();
+        sortTools();
+    }
 });
 
 // Renderizar lista de ferramentas
@@ -24,11 +26,15 @@ function renderTools(tools) {
     }
 
     // Ordenação (Destaques primeiro)
-    tools.sort((a, b) => {
-        return (a.featured === b.featured) ? 0 : a.featured ? -1 : 1;
+    const order = document.getElementById('sortOrder')?.value || 'newest';
+    const orderedTools = [...tools].sort((a, b) => {
+        if (order === 'featured') {
+            return Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || b.id - a.id;
+        }
+        return b.id - a.id;
     });
 
-    tools.forEach(tool => {
+    orderedTools.forEach(tool => {
         const card = document.createElement('div');
         card.className = 'card';
         
@@ -72,27 +78,31 @@ function renderCategories() {
     });
 }
 
-// Filtro por Categoria
+// Mantém os filtros sincronizados com a ordenação.
+let selectedCategory = 'Todas';
+
 function filterByCategory(category, event) {
-    if (category === 'Todas') {
-        renderTools(toolsData);
-    } else {
-        const filtered = toolsData.filter(tool => tool.category === category);
-        renderTools(filtered);
-    }
-    
-    // Atualiza visual dos botões
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    if(event) event.target.classList.add('active');
+    selectedCategory = category;
+    document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    sortTools();
 }
 
-// Busca por Texto
 function filterTools() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = toolsData.filter(tool => 
-        tool.name.toLowerCase().includes(query) || 
-        tool.description.toLowerCase().includes(query)
-    );
+    sortTools();
+}
+
+function sortTools() {
+    if (typeof toolsData === 'undefined') return;
+    const searchInput = document.getElementById('searchInput');
+    const query = (searchInput?.value || '').trim().toLocaleLowerCase('pt-BR');
+    const filtered = toolsData.filter(tool => {
+        const matchesCategory = selectedCategory === 'Todas' || tool.category === selectedCategory;
+        const matchesSearch = !query ||
+            tool.name.toLocaleLowerCase('pt-BR').includes(query) ||
+            tool.description.toLocaleLowerCase('pt-BR').includes(query);
+        return matchesCategory && matchesSearch;
+    });
     renderTools(filtered);
 }
 /* --- MODO ESCURO --- */
@@ -103,7 +113,7 @@ const body = document.body;
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
     body.classList.add('dark-mode');
-    themeBtn.innerText = '☀️'; // Muda ícone para Sol
+    if (themeBtn) themeBtn.innerText = '☀️'; // Muda ícone para Sol
 }
 
 // 2. Função de Troca ao Clicar

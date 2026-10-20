@@ -6,6 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Guias editoriais relacionados a ferramentas específicas do diretório.
+const toolGuides = {
+    'ChatGPT': { href: 'chatgpt-vs-claude.html', label: 'Comparar ChatGPT e Claude' },
+    'Claude 3': { href: 'chatgpt-vs-claude.html', label: 'Comparar ChatGPT e Claude' },
+    'Midjourney': { href: 'como-usar-midjourney.html', label: 'Ver guia do Midjourney' },
+    'Manus AI': { href: 'manus-ai-agent.html', label: 'Conhecer o Manus AI' },
+    'Gemini': { href: 'nano-banana-gemini.html', label: 'Conhecer o Nano Banana no Gemini' },
+    'Deepseek': { href: 'deepseek-r1-revolucao.html', label: 'Entender o DeepSeek R1' }
+};
+
 // Renderizar lista de ferramentas
 function renderTools(tools) {
     const grid = document.getElementById('toolsGrid');
@@ -39,6 +49,9 @@ function renderTools(tools) {
         card.className = 'card';
         
         const sponsoredHtml = tool.sponsored ? '<span class="sponsored-tag">Patrocinado</span>' : '';
+        const guide = toolGuides[tool.name];
+        const guideHtml = guide ? `<a href="${guide.href}" class="tool-guide-link">${guide.label} →</a>` : '';
+
 
         card.innerHTML = `
             ${sponsoredHtml}
@@ -50,6 +63,7 @@ function renderTools(tools) {
                 <span class="badge">${tool.category}</span>
             </div>
             <p>${tool.description}</p>
+            ${guideHtml}
             <a href="${tool.link}" target="_blank" class="btn-visit">Visitar Site</a>
         `;
         grid.appendChild(card);
